@@ -6,7 +6,7 @@ export const contactValidator = joi.object().keys({
     lastname: joi.string().min(5).required(),
 });
 
-export const updateContactValidator = joi.objetct().keys({
+export const updateContactValidator = joi.object().keys({
     firstname: joi.string().min(5),
     lastname: joi.string().min(5),
     phone: joi.string().min(10).regex(/^\d+$/)
