@@ -35,4 +35,6 @@ To run the test in this project, you have to run the next command:
 npm run test
 ```
 
+You will see a message in your terminal like next one:
 
+![terminal](./assets/1.png)
