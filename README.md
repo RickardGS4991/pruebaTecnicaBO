@@ -29,3 +29,10 @@ This command will run the principal file to run all application. If you want to 
 
 ## TEST
 
+To run the test in this project, you have to run the next command:
+
+```bash
+npm run test
+```
+
+
