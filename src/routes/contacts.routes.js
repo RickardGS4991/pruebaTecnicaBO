@@ -6,8 +6,8 @@ const contactsRouter = new Router();
 const datasource = new HubspotFunctionsImpl();
 const controller = new ContactsController(datasource);
 
-contactsRouter.get('/getallcontacts', (req, res) => {
-    controller.getContacts(req, res);
+contactsRouter.get('/getallcontacts', async (req, res) => {
+    await controller.getContacts(req, res);
 });
 
 contactsRouter.post('/createcontact', (req, res) => {

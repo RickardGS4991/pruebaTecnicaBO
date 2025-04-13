@@ -4,7 +4,7 @@ import { IHubspotFunctions } from "./base/contacts.model.js";
 export class HubspotFunctionsImpl extends IHubspotFunctions{
     async newContact(info){
         try {
-            const hubspot = HubSpotConnection.getHubspotClient();
+            const hubspot = await HubSpotConnection.getHubspotClient();
             let { email, firstname, lastname } = info;
             const response = await hubspot.post('/crm/v3/objects/contacts', {
                 properties: {
@@ -20,19 +20,21 @@ export class HubspotFunctionsImpl extends IHubspotFunctions{
         }
     }
 
-    async getAllContacts(){
+    async getAllContacts() {
         try {
-            const hubspot = HubSpotConnection.getHubspotClient();
-            const response = await hubspot.get('/crm/v3/objects/contacts')
-            return response.data;
+          const hubspot = await HubSpotConnection.getHubspotClient();
+      
+          const response = await hubspot.get('/crm/v3/objects/contacts');
+      
+          return response.data;
         } catch (error) {
-            throw new Error('Unable to retrieve information from server');
+          throw new Error('Unable to retrieve information from server');
         }
-    }
+      }
 
     async getContact(id){
         try {
-            const hubspot = HubSpotConnection.getHubspotClient();
+            const hubspot = await HubSpotConnection.getHubspotClient();
            const response = await hubspot.get(`/crm/v3/objects/contacts/${id}`); 
            return response.data;
         } catch (error) {
@@ -42,7 +44,7 @@ export class HubspotFunctionsImpl extends IHubspotFunctions{
 
     async getContactWithEmail(email){
         try {
-            const hubspot = HubSpotConnection.getHubspotClient();
+            const hubspot = await HubSpotConnection.getHubspotClient();
             const response = await hubspot.post('/crm/v3/objects/contacts/search', {
                 filterGroups: [
                   {
@@ -72,7 +74,7 @@ export class HubspotFunctionsImpl extends IHubspotFunctions{
 
     async updateContact(id, info){
         try {
-            const hubspot = HubSpotConnection.getHubspotClient();
+            const hubspot = await HubSpotConnection.getHubspotClient();
             const response = await hubspot.patch(`/crm/v3/objects/contacts/${id}`, {
                 properties: info
             });
@@ -85,7 +87,7 @@ export class HubspotFunctionsImpl extends IHubspotFunctions{
 
     async deleteContact(id){
         try {
-            const hubspot = HubSpotConnection.getHubspotClient();
+            const hubspot = await HubSpotConnection.getHubspotClient();
             const response = await hubspot.delete(`/crm/v3/objects/contacts/${id}`);
             if(response.status !== 204){
                 return false;
