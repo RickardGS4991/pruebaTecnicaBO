@@ -7,7 +7,7 @@ export class HubSpotConnection {
         return axios.create({
             baseURL: 'https://api.hubapi.com',
             headers: {
-                'Authorization': `Bearer pat-na1-9c838c01-93e2-4164-bd19-8ac986eea961`,
+                'Authorization': `Bearer ${process.env.API_KEY}`,
                 'Content-Type': 'application/json'
             }
         });
