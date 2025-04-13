@@ -29,3 +29,22 @@ This command will run the principal file to run all application. If you want to 
 
 ## TEST
 
+To run tests in this project, you have to run the next command:
+
+```bash
+npm run test
+```
+
+You should see a message in your terminal like next one:
+
+![terminal](./assets/1.png)
+
+This indicates that all test are correctly implemented and passing. However, if you plan to edit tests and you do not want to run this command manually each time, you can run the next command:
+
+```bash
+npm run test:watch
+```
+
+![terminal2](./assets/2.png)
+
+With this command, it will "watch" every change that you make in the test. Every change you saved, the tests will automatically re-run.
